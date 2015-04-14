@@ -7,10 +7,13 @@ class MoviesController < ApplicationController
   end
 
   def index
-    if !params[:sort].nil? and params[:sort] == 'asc'
-        @movies = Movie.find(:all , :order => 'title')
+    if params[:title_sort] then
+        @movies = Movie.order("title asc").all
+        @hilite_title = "hilite"
+    elsif params[:release_sort] then
+        @movies = Movie.order("release_date asc").all
         @hilite = true
-    else
+    else    
         @movies = Movie.all
     end
   end
