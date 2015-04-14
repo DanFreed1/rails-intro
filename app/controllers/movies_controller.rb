@@ -12,7 +12,7 @@ class MoviesController < ApplicationController
         @hilite_title = "hilite"
     elsif params[:release_sort] then
         @movies = Movie.order("release_date asc").all
-        @hilite = true
+        @hilite_release_date = "hilite"
     else    
         @movies = Movie.all
     end
